@@ -7,3 +7,14 @@ def dinheiro(n):
            num.append(e)
     money = ''.join(num)
     return money
+
+
+def data_hoje(padrao=1):
+    from datetime import date
+    if padrao != 1:
+        d = date.today().day
+        m = date.today().month
+        y = date.today().year
+        return [y, m, d]
+    else:
+       return date.today()
