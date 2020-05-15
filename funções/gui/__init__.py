@@ -9,12 +9,14 @@
 
 def GUI():
     from PyQt5 import QtCore, QtGui, QtWidgets
-    from funções.dados import data_hoje
+    from funções.dados import data_hoje, tecla
+
     class Ui_MainWindow(object):
         def setupUi(self, MainWindow):
             MainWindow.setObjectName("MainWindow")
             MainWindow.resize(801, 652)
             MainWindow.setBaseSize(QtCore.QSize(0, 0))
+            MainWindow.setWindowIcon(QtGui.QIcon("C:/Users/jucia/PycharmProjects/Controle_de_Estoque/funções/gui/logo-quadrado.png"))
 
             self.centralwidget = QtWidgets.QWidget(MainWindow)
             self.centralwidget.setObjectName("centralwidget")
@@ -135,14 +137,8 @@ def GUI():
             self.pushButton.setText("")
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap("C:/Users/jucia/PycharmProjects/Controle_de_Estoque/funções/gui/Go-back-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.pushButton.setIconSize(QtCore.QSize(30, 30))
             self.pushButton.setIcon(icon)
-            self.pushButton.setShortcut("")
-            self.pushButton.setCheckable(False)
-            self.pushButton.setAutoRepeat(False)
-            self.pushButton.setAutoExclusive(False)
-            self.pushButton.setAutoDefault(False)
-            self.pushButton.setDefault(False)
-            self.pushButton.setFlat(False)
             self.pushButton.setObjectName("Voltar")
 
             MainWindow.setCentralWidget(self.centralwidget)
@@ -175,18 +171,15 @@ def GUI():
             self.menuFile.setTitle(_translate("MainWindow", "File"))
 
         def save(self):
+            global cod, tam, desc, preco_entrada, preco_saida, data
             cod = self.input_Cod.text()
             tam = self.input_Tam.text()
             desc = self.input_Desc.text()
             preco_entrada = self.input_P_entrada.text()
             preco_saida = self.input_P_Saida.text()
-            data = self.dateEdit.date()
-            print(cod)
-            print(tam)
-            print(desc)
-            print(preco_entrada)
-            print(preco_saida)
-            print(data)
+            data = self.dateEdit.text()
+            roupa = [cod, tam, desc, preco_entrada, preco_saida, data]
+            print(roupa)
 
     # if __name__ == "__main__":
     import sys
@@ -196,5 +189,3 @@ def GUI():
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-
-
