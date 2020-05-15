@@ -18,9 +18,3 @@ def data_hoje(padrao=1):
         return [y, m, d]
     else:
        return date.today()
-
-
-def tecla(key):
-    import keyboard
-    return keyboard.is_pressed(key)
-
