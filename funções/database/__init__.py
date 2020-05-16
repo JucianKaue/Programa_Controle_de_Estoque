@@ -24,7 +24,7 @@ def iniciardb(host='127.0.0.1', user='root', passwd='', database='loja'):
             cursor.execute(f"CREATE DATABASE IF NOT EXISTS {database}")
     cursor = db.cursor()
     cursor.execute("""CREATE TABLE IF NOT EXISTS `roupas` (
-  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` int(11) NOT NULL,
   `tamanho` varchar(2) DEFAULT NULL,
   `descrição` varchar(100) DEFAULT 'sem descrição',
   `preço entrada` decimal(5,2) DEFAULT '00.00',
@@ -45,17 +45,7 @@ def adicionar(codigo='DEFAULT', tamanho='', descricao='sem descrição', preco_e
     cursor.execute("INSERT INTO roupas"
                     "(`codigo`, `tamanho`, `descrição`, `preço entrada`, `preço saida`, `dia entrada`)"
                     "VALUES"
-                    f"({codigo}, '{tamanho}', '{descricao}', '{preco_entrada}', '{preco_saida}', '{dia_entrada}')"
+                    f"('{codigo}', '{tamanho}', '{descricao}', '{preco_entrada}', '{preco_saida}', '{dia_entrada}')"
                    )
     db.commit()
-
-
-iniciardb()
-adicionar(
-    tamanho='40',
-    descricao='Casaco Moletom Baiki Badhai',
-    preco_entrada='56,87543',
-    preco_saida='123,543654'
-)
-
 

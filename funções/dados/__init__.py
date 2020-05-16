@@ -18,3 +18,11 @@ def data_hoje(padrao=1):
         return [y, m, d]
     else:
        return date.today()
+
+
+def data(data):
+    e = data.replace('/', ' ').split()
+    return f'{e[2]}-{e[1]}-{e[0]}'
+
+
+print(data('15/05/2020'))
