@@ -25,4 +25,16 @@ def data(data):
     return f'{e[2]}-{e[1]}-{e[0]}'
 
 
+def width(largura):
+    from PyQt5 import QtWidgets
+    width = QtWidgets.QDesktopWidget().screenGeometry(-1).width()
+    return int((width/100)*largura)
+
+
+def heigth(altura):
+    from PyQt5 import QtWidgets
+    height = QtWidgets.QDesktopWidget().screenGeometry(-1).height()
+    return int((height / 100) * altura)
+
+
 print(data('15/05/2020'))

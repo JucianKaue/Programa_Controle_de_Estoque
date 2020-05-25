@@ -30,11 +30,12 @@ def iniciardb(host='127.0.0.1', user='root', passwd='', database='loja'):
   `preço entrada` decimal(5,2) DEFAULT '00.00',
   `preço saida` decimal(5,2) DEFAULT '00.00',
   `dia entrada` date DEFAULT NULL,
+  `quantidade` int(2),
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;""")
 
 
-def adicionar(codigo='DEFAULT', tamanho='', descricao='sem descrição', preco_entrada='R$00,00', preco_saida='R$00,00', dia_entrada=0):
+def adicionar(codigo='DEFAULT', tamanho='', descricao='sem descrição', preco_entrada='R$00,00', preco_saida='R$00,00', dia_entrada=0, quantidade=0):
     from datetime import date
     from funções import dados
     if dia_entrada == 0:
@@ -42,10 +43,17 @@ def adicionar(codigo='DEFAULT', tamanho='', descricao='sem descrição', preco_e
     cursor = db.cursor()
     preco_entrada = dados.dinheiro(f'{preco_entrada}')
     preco_saida = dados.dinheiro(f'{preco_saida}')
-    cursor.execute("INSERT INTO roupas"
-                    "(`codigo`, `tamanho`, `descrição`, `preço entrada`, `preço saida`, `dia entrada`)"
+    if not tamanho.isnumeric():
+        tamanho = tamanho.upper()
+    cursor.execute(
+                    "INSERT INTO roupas"
+                    "(`codigo`, `tamanho`, `descrição`, `preço entrada`, `preço saida`, `dia entrada`, `quantidade`)"
                     "VALUES"
-                    f"('{codigo}', '{tamanho}', '{descricao}', '{preco_entrada}', '{preco_saida}', '{dia_entrada}')"
+                    f"('{codigo}', '{tamanho}', '{descricao}', '{preco_entrada}', '{preco_saida}', '{dia_entrada}', '{quantidade}')"
                    )
     db.commit()
 
+
+def vertabela():
+    cursor = db.cursor()
+    return cursor.execute('select * from roupas')
