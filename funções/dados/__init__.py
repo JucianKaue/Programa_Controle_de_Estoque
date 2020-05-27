@@ -35,6 +35,3 @@ def heigth(altura):
     from PyQt5 import QtWidgets
     height = QtWidgets.QDesktopWidget().screenGeometry(-1).height()
     return int((height / 100) * altura)
-
-
-print(data('15/05/2020'))

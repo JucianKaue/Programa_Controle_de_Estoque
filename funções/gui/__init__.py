@@ -12,6 +12,7 @@
 def AddWindow():
     from PyQt5 import QtCore, QtGui, QtWidgets
     from funções import dados
+
     class Ui_MainWindow(object):
         def setupUi(self, MainWindow):
             MainWindow.setObjectName("MainWindow")
@@ -141,7 +142,6 @@ def AddWindow():
             self.dateEdit.setObjectName("dateEdit")
             self.dateEdit.setDate(QtCore.QDate(dados.data_hoje()))
 
-
     # Botão Salvar
             self.PushButton_Save = QtWidgets.QPushButton(self.centralwidget)
             self.PushButton_Save.setGeometry(QtCore.QRect(dados.width(60), dados.heigth(73), 111, 41))
@@ -153,7 +153,7 @@ def AddWindow():
             self.pushButton.setGeometry(QtCore.QRect(dados.width(20), dados.heigth(73), 75, 51))
             self.pushButton.setText("")
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap("C:/Users/jucia/PycharmProjects/Controle_de_Estoque/imagens/Go-back-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            icon.addPixmap(QtGui.QPixmap("C:/Users/jucia/PycharmProjects/Controle_de_Estoque/imagens/Go-back-icon.png"), icon.Normal, icon.Off)
             self.pushButton.setIconSize(QtCore.QSize(30, 30))
             self.pushButton.setIcon(icon)
             self.pushButton.setObjectName("Voltar")
